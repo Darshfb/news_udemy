@@ -37,7 +37,7 @@ class _CategoryWidgetState extends State<CategoryWidget>
         Expanded(
           child: TabBarView(
             controller: controller,
-              children: CategoryList.categoryItems.map((e) => ListItems()).toList()),
+              children: CategoryList.categoryItems.map((e) => ListItems(list: [],)).toList()),
         )
       ],
     );

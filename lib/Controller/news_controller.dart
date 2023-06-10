@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:news_udemy/Controller/api_helper.dart';
+import 'package:news_udemy/Model/news_model.dart';
 
 class NewsController extends GetxController {
   final box = GetStorage();
@@ -31,5 +33,20 @@ class NewsController extends GetxController {
   void changeNavBar({required int currentIndex}) {
     index = currentIndex;
     update();
+  }
+
+  NewsHelper newsHelper = NewsHelper();
+
+  List<NewsModel> list = [];
+
+  void getHeadlines() async {
+    list = await newsHelper.getHeadlines();
+    update();
+  }
+
+  @override
+  void onInit() {
+    getHeadlines();
+    super.onInit();
   }
 }
